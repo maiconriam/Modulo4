@@ -6,7 +6,7 @@ public class LeadDTO {
     private String nome;
     private String telefone;
     private String email;
-    private List<ProdutoDTO> listaDeProdutos;
+    private List<ProdutoDTO> produtos;
 
     public LeadDTO() {
 
@@ -42,7 +42,15 @@ public class LeadDTO {
         this.email = email;
     }
 
+    public List<ProdutoDTO> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<ProdutoDTO> produtos) {
+        this.produtos = produtos;
+    }
+
     public void adicionarProduto(ProdutoDTO novoProduto){
-        listaDeProdutos.add(novoProduto);
+        produtos.add(novoProduto);
     }
 }
