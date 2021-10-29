@@ -24,11 +24,20 @@ public class LeadService {
             if(referencia.getEmail().equalsIgnoreCase(leadDTO.getEmail())){
                 if(existeProdutoDuplicado(referencia, leadDTO)){
                     throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+                }else {
+                    atualizarListaProduto(referencia, leadDTO);
+                    return;
                 }
             }
         }
 
         listaDeLead.add(leadDTO);
+    }
+
+    private void atualizarListaProduto(LeadDTO lead, LeadDTO leadInput) {
+        for(ProdutoDTO novoProduto: leadInput.getProdutos()){
+            lead.adicionarProduto(novoProduto);
+        }
     }
 
     private boolean existeProdutoDuplicado(LeadDTO lead, LeadDTO leadDTO) {
